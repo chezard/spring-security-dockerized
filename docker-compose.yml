@@ -12,7 +12,7 @@ services:
       - MARIADB_ROOT_PASSWORD=12345
       - MARIADB_DATABASE=db_app
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
+      - /var/lib/mariadb:/var/lib/mysql
     networks:
       - shared-net
 
