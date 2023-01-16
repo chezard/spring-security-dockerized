@@ -8,7 +8,22 @@ services:
     ports:
       - "3310:3306"
     restart: always
-    hostname: mariadb-service
+    hostname: localhost
+    environment:
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=12345
+      - MARIADB_DATABASE=db_app
+    volumes:
+      - /var/lib/mariadb:/var/lib/mysql
+
+
+  mariadb-service2:
+    image: mariadb:10.9
+    container_name: mariadb-service
+    ports:
+      - "3311:3306"
+    restart: always
+    hostname: localhost
     environment:
       - MARIADB_USER=root
       - MARIADB_ROOT_PASSWORD=12345
@@ -23,8 +38,8 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - DB_HOST=mariadb-service
-      - DB_PORT=3306
+      - DB_HOST=localhost
+      - DB_PORT=3310
       - DB_NAME=db_app
       - DB_USERNAME=root
       - DB_PASSWORD=12345
