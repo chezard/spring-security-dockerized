@@ -7,7 +7,6 @@ services:
     container_name: mariadb-service
     ports:
       - "3310:3306"
-    restart: always
     hostname: mariadb-service
     environment:
       - MARIADB_USER=root
