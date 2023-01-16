@@ -39,7 +39,7 @@ services:
       - "8080:8080"
     environment:
       - DB_HOST=localhost
-      - DB_PORT=3310
+      - DB_PORT=3306
       - DB_NAME=db_app
       - DB_USERNAME=root
       - DB_PASSWORD=12345
@@ -54,7 +54,7 @@ services:
       - "8081:8080"
     environment:
       - DB_HOST=localhost
-      - DB_PORT=3311
+      - DB_PORT=3306
       - DB_NAME=db_app
       - DB_USERNAME=root
       - DB_PASSWORD=12345
