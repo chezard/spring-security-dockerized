@@ -4,6 +4,7 @@ services:
 
   mariadb-service:
     image: mariadb:10.9
+    container_name: mariadb-service
     ports:
       - "3310:3310"
     restart: always
