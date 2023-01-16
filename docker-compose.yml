@@ -8,7 +8,6 @@ services:
     ports:
       - "3310:3306"
     restart: always
-    hostname: localhost
     environment:
       - MARIADB_USER=root
       - MARIADB_ROOT_PASSWORD=12345
