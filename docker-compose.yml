@@ -8,6 +8,7 @@ services:
     ports:
       - "3310:3306"
     restart: always
+    hostname: mariadb-service
     environment:
       - MARIADB_USER=root
       - MARIADB_ROOT_PASSWORD=12345
