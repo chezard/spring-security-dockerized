@@ -16,21 +16,6 @@ services:
     volumes:
       - /var/lib/mariadb:/var/lib/mysql
 
-
-  mariadb-service2:
-    image: mariadb:10.9
-    container_name: mariadb-service2
-    ports:
-      - "3311:3306"
-    restart: always
-    hostname: localhost
-    environment:
-      - MARIADB_USER=root
-      - MARIADB_ROOT_PASSWORD=12345
-      - MARIADB_DATABASE=db_app
-    volumes:
-      - /var/lib/mariadb:/var/lib/mysql
-
   app:
     build:
       context: ./
@@ -45,18 +30,3 @@ services:
       - DB_PASSWORD=12345
     depends_on:
       - mariadb-service
-
-  app2:
-    build:
-      context: ./
-    container_name: spring-security-app2
-    ports:
-      - "8081:8080"
-    environment:
-      - DB_HOST=localhost
-      - DB_PORT=3306
-      - DB_NAME=db_app
-      - DB_USERNAME=root
-      - DB_PASSWORD=12345
-    depends_on:
-        - mariadb-service2
