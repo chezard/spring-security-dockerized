@@ -1,9 +1,8 @@
 FROM openjdk:17 as BUILD
 
-COPY pom.xml ./
-COPY mvnw ./
+COPY pom.xml mvnw ./
 COPY .mvn .mvn
-RUN ./mvnw dependency:go-offline
+RUN chmod +x mvnw && ./mvnw dependency:go-offline
 
 COPY src src
 RUN ./mvnw package -DskipTests
