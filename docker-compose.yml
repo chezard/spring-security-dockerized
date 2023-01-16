@@ -6,7 +6,7 @@ services:
     image: mariadb:10.9
     container_name: mariadb-service
     ports:
-      - "3306:3306"
+      - "3310:3306"
     restart: always
     hostname: mariadb-service
     environment:
