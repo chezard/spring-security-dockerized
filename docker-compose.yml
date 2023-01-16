@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+
+  mariadb-service:
+    image: mariadb:10.9
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      - MARIADB_USER=root
+      - MARIADB_ROOT_PASSWORD=12345
+      - MARIADB_DATABASE=db_app
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+    networks:
+      - shared-net
+
+  app:
+    build:
+      context: ./
+    container_name: spring-security-app
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mariadb-service
+      - DB_PORT=3306
+      - DB_NAME=db_app
+      - DB_USERNAME=root
+      - DB_PASSWORD=12345
+    depends_on:
+      - mariadb-service
+    networks:
+      - shared-net
+
+networks:
+  shared-net:
+    driver: bridge
